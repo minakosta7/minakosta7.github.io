@@ -1,10 +1,33 @@
 <!doctype html>
 <html>
-<head>
+<head lang="ja">
 <meta charset="utf-8">
-<title>無題ドキュメント</title>
+<title>メモ</title>
+<script src="jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
+<from action="" id="form">
+<textarea id="memo" cols="30" rows="10">
+</textarea>
+<div>
+<input id="save" type="button" value="保存">
+<input id="dale" type="button" value="消去">
+</div>
+</from>
+<script>
+	var memo=localStorage.getItem("memodata");
+	$("#memo").val(memo);
+
+	$("#save").click(function(){
+	memo = $("#memo").val();
+	localStorage.setItem("memodata",memo);
+	});
+	
+	$("#dale").click(function(){
+	$("#memo").val('');
+	localStorage.clear();
+	});
+	</script>
 </body>
 </html>
