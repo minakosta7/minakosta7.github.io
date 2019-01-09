@@ -21,10 +21,10 @@
 	
 	//問題の設定
 	var q = [];
-	q[0] =["HTMLにJavaScriptを記述するときに必要なタグは？","style","script","html",2];
-	q[1] =["HTMLは何という言葉の略ですか？","Hyperlinks and Text Markup Language","Home Tool Markup Language",
-	"Hyper Text Markup Language",3];
-	q[2] =["WEB標準の規格を定めているのはどこでしょうか？","Mozilla","Google","The World Wide Web Consortium",
+	q[0] =["この犬の犬種は？","トイプードル","ポメラニアン","ダルメシアン",2];
+	q[1] =["この犬の犬種は？","チワワ","マルチーズ",
+	"シベリアンハスキー",3];
+	q[2] =["この犬の犬種は？","雑種","ミックス","ゴールデンレトリバー",
 	3];
 
 	var count = 0;
@@ -40,8 +40,11 @@ document.getElementById('gameEnd').style = "display:none";
 question(count);
 }
 
-var question =function(num){
+var question =function(num){var file_name = "q"+(num+1)+".jpg";
+console.log(file_name)
 	var mondai = document.getElementById('mondai');
+	var q_image = document.getElementById("q_image");
+q_image.src = file_name;
 	var sentaku = document.getElementById('sentaku');
 
 	while (sentaku.firstChild) {
@@ -87,12 +90,14 @@ detail =document.getElementById('detail');
 window.addEventListener('load',init);
 </script>
 </head>
-<body>
+<body style= "text-align: center" >
+ 
 <div id="gamePlay">
 	<h1>クイズ</h1>
-	<div id="mondai" style= "text-align: center"></div>
-	<div id="kaito" style= "text-align: center" >
-	<ul id="sentaku"></ul>
+	<div id="mondai"></div>
+	<img id="q_image">
+	<div id="kaito">
+	<ul id="sentaku" style="list-style: none"></ul>
 	</div>
 </div>
 
