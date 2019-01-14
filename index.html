@@ -23,6 +23,9 @@
 			text-align: center;
 			margin: 0 auto;
 			width:250px;
+			height: 150px;
+			background-size: 250px auto;
+			background-repeat: no-repeat;
 		}
 		  #sentaku{
 		    text-align: center;
@@ -88,7 +91,8 @@ var question =function(num){
 	var mondai = document.getElementById('mondai');
 
 	var q_image = document.getElementById("q_image");
-	q_image.src = file_name;
+	q_image.style.backgroundImage = 'url('file_name;')';
+	
 	var sentaku = document.getElementById('sentaku');
 
 	while (sentaku.firstChild) {
@@ -142,7 +146,7 @@ window.addEventListener('load',init);
 <div id="gamePlay">
 	<h1>クイズわんわんお！</h1>
 	<div id="mondai"></div>
-	<img id="q_image">
+	<img id="q_image"></div>
 	<div id="kaito">
 	<div id="sentaku"></div>
 	</div>
