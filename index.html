@@ -69,9 +69,9 @@
 	
 	//問題の設定
 	var q = [];
-	q[0] =["この犬の犬種（∪＾ω＾）は？","トイプードル","ポメラニアン","ダルメシアン","シナモンロール",2];
-	q[1] =["この犬の犬種（∪＾ω＾）は？","チワワ","マルチーズ","シベリアンハスキー","ハローキティ",3];
-	q[2] =["【難問】この犬の犬種（∪＾ω＾）は？","雑種","ミックス","ゴールデンレトリバー","ポムポムプリン",3];
+	q[0] =["この写真の犬の犬種（∪＾ω＾）は？","トイプードル","ポメラニアン","ダルメシアン","シナモンロール",2];
+	q[1] =["この写真の犬の犬種（∪＾ω＾）は？","チワワ","マルチーズ","シベリアンハスキー","ハローキティ",3];
+	q[2] =["【難問】この写真の犬の犬種（∪＾ω＾）は？","雑種","ミックス","ゴールデンレトリバー","ポムポムプリン",3];
 
 	var count = 0;
 	var hit = 0;
@@ -132,7 +132,7 @@ document.getElementById('gamePlay').style = "display:none";
 document.getElementById('gameEnd').style = "display:block";
 
 document.getElementById('score').textContent = "正解率:"+Math.floor(hit/q.length*100)+"%";
-document.getElementById('outline').textContent = q.length+"問中、正解わ "+hit+"問だったお！";
+document.getElementById('outline').textContent = q.length+"問中、正解は "+hit+"問だったよ！";
 
 detail =document.getElementById('detail');
 }
@@ -153,11 +153,11 @@ window.addEventListener('load',init);
 </div>
 
 <div id="gameEnd">
-	<h1>結果発表だお！</h1>
+	<h1>結果発表だよ！</h1>
 	<div id="score"></div>
 	<div id="outline"></div>
 	<div id="detail"></div>
-	<div><a href="javascript:init();">もう一度ゲームを行う（∪＾ω＾）お？</a></div>
+	<div><a href="javascript:init();">もう一度ゲームを行う（∪＾ω＾）？</a></div>
 </div>
 
 </body>
