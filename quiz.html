@@ -2,30 +2,68 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" >
 	<title>クイズゲーム</title>
 	<style>
+		#mondai{
+			font-size: 20px
+		}
+		font-weight:bold
 		#base{
 	          width:80%;
 			  margin: 0 auto;
 		}
 		#page1{
-		　　　 background-color: #ffddd;
-			  padding: 10px;
+			padding: 10px;
 		}
 		#page2{
-		      background-color: #ddeeff;
 			  padding: 10px;
 		}
+		  #sentaku{
+		    text-align: center;
+		    margin: 0 auto;
+		    width:320px;
+		  }
+		  #sentaku_1, #sentaku_2, #sentaku_3, #sentaku_4{ 
+		   width:140px; 
+		   height:40px; 
+		   line-height:40px;
+		   margin:10px; 
+		   border-radius: 5px; 
+		   font-size:12px;
+		   float:left;
+		   box-shadow: 2px 2px;
+		  }
+		  #sentaku_1{ 
+		   background-color:#F6CEF5;
+		   color:#F00;
+		  }
+		  #sentaku_2{ 
+		   background-color:#CCEFF8;
+		   color:#00F;
+		  }
+		  #sentaku_3{ 
+		   background-color:#E0F8E6;
+		   color:#04B404;
+		  }
+		  #sentaku_4{ 
+		   background-color:#CECEF6;
+		   color:#4B088A;
+		  }
+		  .answer_count{
+		   font-size:20px;
+		  }
+		  a{
+		  text-decoration: none; 
+		  }
 		</style>
 	<script>
 	
 	//問題の設定
 	var q = [];
-	q[0] =["この犬の犬種は？","トイプードル","ポメラニアン","ダルメシアン",2];
-	q[1] =["この犬の犬種は？","チワワ","マルチーズ",
-	"シベリアンハスキー",3];
-	q[2] =["この犬の犬種は？","雑種","ミックス","ゴールデンレトリバー",
-	3];
+	q[0] =["この犬の犬種（∪＾ω＾）は？","トイプードル","ポメラニアン","ダルメシアン","柴犬",2];
+	q[1] =["この犬の犬種（∪＾ω＾）は？","チワワ","マルチーズ","シベリアンハスキー","追加	",3];
+	q[2] =["【難問】この犬の犬種（∪＾ω＾）は？","雑種","ミックス","ゴールデンレトリバー","追加",3];
 
 	var count = 0;
 	var hit = 0;
@@ -40,29 +78,33 @@ document.getElementById('gameEnd').style = "display:none";
 question(count);
 }
 
-var question =function(num){var file_name = "q"+(num+1)+".jpg";
-console.log(file_name)
+var question =function(num){
+	var file_name = "q"+(num+1)+".jpg";
 	var mondai = document.getElementById('mondai');
+
 	var q_image = document.getElementById("q_image");
-q_image.src = file_name;
+	q_image.src = file_name;
 	var sentaku = document.getElementById('sentaku');
 
 	while (sentaku.firstChild) {
 		sentaku.removeChild(sentaku.firstChild);
 	}
+	mondai.textContent = '';
+	mondai.innerHTML += '<span class="answer_count">【回答数】:'+(num+1)+'/'+q.length+'</span><br>'+q[num][0];
 
-	mondai.textContent = q[num][0];	 
+	for(i=1;i<=4;i++){
+		sentaku.innerHTML += '<a href="javascript:answer('+i+')"><div id="sentaku_'+i+'">'+i+'.'+q[num][i]+'</div></a>';
+//		sentaku.innerHTML += '<div id="sentaku_'+i+'">'+i+'.'+q[num][i]+'</div>';
 
-	for(i=1;i<=3;i++){
-		toi1 = document.createElement('li');
-		toi1.innerHTML += '<a href="javascript:answer('+i+')">'+q[num][i]+'</a>';
-		sentaku.appendChild(toi1);
+		if( i%2 == 0 ){
+			sentaku.innerHTML += '<div style="clear:both"></div>';
+		}
 	}
 }
 
 var answer = function(num) {
 
-	if (num == q[count][4]) {
+	if (num == q[count][5]) {
 		hit++;
 	}
 //回答数
@@ -81,7 +123,7 @@ document.getElementById('gamePlay').style = "display:none";
 document.getElementById('gameEnd').style = "display:block";
 
 document.getElementById('score').textContent = "正解率:"+Math.floor(hit/q.length*100)+"%";
-document.getElementById('outline').textContent = q.length+"問中、正解は "+hit+"問でした";
+document.getElementById('outline').textContent = q.length+"問中、正解わ "+hit+"問だったお！";
 
 detail =document.getElementById('detail');
 }
@@ -90,23 +132,23 @@ detail =document.getElementById('detail');
 window.addEventListener('load',init);
 </script>
 </head>
-<body style= "text-align: center" >
+<body style= "text-align: center;background-color: beige" >
  
 <div id="gamePlay">
-	<h1>クイズ</h1>
+	<h1>クイズわんわんお！</h1>
 	<div id="mondai"></div>
 	<img id="q_image">
 	<div id="kaito">
-	<ul id="sentaku" style="list-style: none"></ul>
+	<div id="sentaku"></div>
 	</div>
 </div>
 
 <div id="gameEnd">
-	<h1>結果発表</h1>
+	<h1>結果発表だお！</h1>
 	<div id="score"></div>
 	<div id="outline"></div>
 	<div id="detail"></div>
-	<div><a href="javascript:init();">もう一度ゲームを行う</a></div>
+	<div><a href="javascript:init();">もう一度ゲームを行う（∪＾ω＾）お？</a></div>
 </div>
 
 </body>
